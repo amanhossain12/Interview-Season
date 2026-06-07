@@ -42,10 +42,11 @@ public class InterviewService {
         User user = findUser(userEmail);
 
         Resume resume = null;
-        if (request.getResumeId() != null) {
-            resume = resumeRepository.findById(UUID.fromString(request.getResumeId()))
+        if (request.getResumeId() != null && !request.getResumeId().trim().isEmpty() && !"null".equalsIgnoreCase(request.getResumeId().trim())) {
+            resume = resumeRepository.findById(UUID.fromString(request.getResumeId().trim()))
                 .orElse(null);
         }
+
 
         InterviewSession session = InterviewSession.builder()
             .user(user)
