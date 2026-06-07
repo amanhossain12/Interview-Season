@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/interviewai}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # Auto-creates tables locally — no Flyway needed
+    show-sql: true
+
+  flyway:
+    enabled: false       # Disable Flyway for local development
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: placeholder
+            client-secret: placeholder
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: placeholder@gmail.com
+    password: placeholder
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# Disable email sending in local dev
+app:
+  frontend-url: http://localhost:3001
+  backend-url: http://localhost:8080
+  email-verification-expiry-hours: 24
+  password-reset-expiry-hours: 2
+
+openai:
+  api-key: ${OPENAI_API_KEY:placeholder}
+
+judge0:
+  api-key: ${JUDGE0_API_KEY:placeholder}
+
+logging:
+  level:
+    com.interviewai: DEBUG
+    org.springframework.security: DEBUG
