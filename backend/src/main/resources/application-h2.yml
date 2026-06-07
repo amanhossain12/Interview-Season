@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:interviewai;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL;NON_KEYWORDS=VALUE
+    url: jdbc:h2:mem:interviewai;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL;NON_KEYWORDS=VALUE;INIT=runscript from 'classpath:init-h2.sql'
     username: sa
     password:
     driver-class-name: org.h2.Driver
